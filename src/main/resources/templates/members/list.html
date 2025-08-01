@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container" style="max-width: 600px">
+    <div class="py-5 text-center">
+        <h2>회원 목록</h2>
+    </div>
+    <form th:object="${memberSearch}" method="get" class="form-inline">
+    <div class="row">
+        <div class="col">
+            <input type="text" th:field="*{loginId}" class="form-control" placeholder="회원ID"/>
+        </div>
+        <div class="col">
+            <input type="text" th:field="*{name}" class="form-control" placeholder="이름"/>
+        </div>
+        <div class="col">
+            <input type="text" th:field="*{nickname}" class="form-control" placeholder="닉네임"/>
+        </div>
+        <div class="col">
+            <button type="submit" class="btn btn-secondary mb-2">검색</button>
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+            <div class="col">
+                <button class="btn btn-primary float-end"
+                        th:onclick="|location.href='@{/members/add}'|"
+                        type="button">회원가입
+                </button>
+            </div>
+        </div>
+    </div>
+
+    </form>
+
+    <hr class="my-4">
+    <div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>이름</th>
+                <th>닉네임</th>
+                <th>핸드폰 번호</th>
+                <th>이메일</th>
+                <th>회원유형</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="member : ${members}">
+                <td><a th:href="@{/members/{id}(id=${member.id})}" th:text="${member.loginId}">회원ID</a>
+                </td>
+                <td th:text="${member.name}">이름</td>
+                <td th:text="${member.nickname}">닉네임</td>
+                <td th:text="${member.phoneNumber}">핸드폰번호</td>
+                <td th:text="${member.email}">이메일</td>
+                <td th:text="${member.role}">회원유형</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div> <!-- /container -->
+
+</body>
+</html>

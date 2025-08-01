@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            max-width: 560px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="py-5 text-center">
+        <h2>회원 정보</h2>
+    </div>
+
+    <!-- 추가 -->
+    <h2 th:if="${param.status}" th:text="'저장 완료'"></h2>
+    <div>
+        <label for="loginId">회원ID</label>
+        <input type="text" id="loginId" name="loginId" class="form-control" th:value="${member.loginId}" readonly>
+    </div>
+    <!--
+    <div>
+        <label for="password">비밀번호</label>
+        <input type="text" id="password" name="password" class="form-control" th:value="${member.password}" readonly>
+    </div>
+    -->
+    <div>
+        <label for="name">이름</label>
+        <input type="text" id="name" name="name" class="form-control" th:value="${member.name}" readonly>
+    </div>
+    <div>
+        <label for="phoneNumber">핸드폰 번호</label>
+        <input type="text" id="phoneNumber" name="phoneNumber" class="form-control" th:value="${member.phoneNumber}" readonly>
+    </div>
+    <div>
+        <label for="email">이메일</label>
+        <input type="text" id="email" name="email" class="form-control" th:value="${member.email}" readonly>
+    </div>
+    <div>
+        <label for="nickname">닉네임</label>
+        <input type="text" id="nickname" name="nickname" class="form-control" th:value="${member.nickname}" readonly>
+    </div>
+
+    <div>
+        <label for="role">회원 유형</label>
+        <input type="text" id="role" name="role" class="form-control" th:value="${member.role}" readonly>
+    </div>
+
+    <div>
+        <label for="createdAt">가입 일자</label>
+        <input type="text" id="createdAt" name="createdAt" class="form-control" th:value="${member.createdAt}" readonly>
+    </div>
+    <div>
+        <label for="updatedAt">수정 일자</label>
+        <input type="text" id="updatedAt" name="updatedAt" class="form-control" th:value="${member.updatedAt}" readonly>
+    </div>
+
+
+    <hr class="my-4">
+
+    <div class="row">
+        <div class="col">
+            <button class="w-100 btn btn-primary btn-lg"
+                    th:onclick="|location.href='@{/members/{memberId}/edit(memberId=${member.id})}'|"
+                    type="button">회원정보 수정</button>
+        </div>
+        <div class="col">
+            <button class="w-100 btn btn-secondary btn-lg"
+                    onclick="location.href='items.html'"
+                    th:onclick="|location.href='@{/members}'|"
+                    type="button">목록으로</button>
+        </div>
+    </div>
+
+</div> <!-- /container -->
+</body>
+</html>

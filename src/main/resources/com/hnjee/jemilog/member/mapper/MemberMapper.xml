@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hnjee.jemilog.member.mapper.MemberMapper">
+    <insert id="save" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO members (
+            login_id,
+            password,
+            name,
+            phone_number,
+            email,
+            nickname,
+            role,
+            is_deleted,
+            created_at,
+            updated_at
+        )
+        VALUES (
+            #{loginId},
+            #{password},
+            #{name},
+            #{phoneNumber},
+            #{email},
+            #{nickname},
+            #{role},
+            #{isDeleted},
+            #{createdAt},
+            #{updatedAt}
+        )
+    </insert>
+    <update id="update">
+        UPDATE members
+        SET
+            password = #{updateParam.password},
+            name = #{updateParam.name},
+            phone_number = #{updateParam.phoneNumber},
+            email = #{updateParam.email},
+            nickname = #{updateParam.nickname}
+        WHERE id = #{id}
+    </update>
+    <select id="findById" resultType="Member">
+        SELECT
+            id,
+            login_id,
+            password,
+            name,
+            phone_number,
+            email,
+            nickname,
+            role,
+            is_deleted,
+            created_at,
+            updated_at
+        FROM members
+        WHERE id = #{id}
+    </select>
+    <select id="findAll" resultType="Member">
+        SELECT
+            id,
+            login_id,
+            password,
+            name,
+            phone_number,
+            email,
+            nickname,
+            role,
+            is_deleted,
+            created_at,
+            updated_at
+        FROM members
+        <where>
+            <if test="loginId != null and loginId != ''">
+                and login_id like concat ('%',#{loginId},'%')
+            </if>
+            <if test="name != null and name != ''">
+                and name like concat ('%',#{name},'%')
+            </if>
+            <if test="nickname != null and nickname != ''">
+                and nickname like concat ('%',#{nickname},'%')
+            </if>
+        </where>
+    </select>
+</mapper>
