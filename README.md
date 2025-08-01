@@ -68,7 +68,7 @@
 <img width="1229" height="640" alt="image" src="https://github.com/user-attachments/assets/90f8ae35-06c1-43ad-a8a1-450309758c7a" />
 <img width="1229" height="640" alt="image" src="https://github.com/user-attachments/assets/a045acbf-7f01-47ac-937b-9bbbe5d73a78" />
 
-# 6. 백엔드 개발시 배운 내용
+# 6. JPA를 활용한 API 개발에서 배운 내용들 
 https://hnjee.tistory.com/178
 
 
